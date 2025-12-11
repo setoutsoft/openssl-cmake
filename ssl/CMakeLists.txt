@@ -44,7 +44,9 @@ include_directories( BEFORE SYSTEM
 )
 
 add_library( ssl ${LIBSRC} )
-
+if(NOT WIN32 OR MINGW)
+target_compile_options(ssl PRIVATE -fPIC)
+endif()
 target_include_directories( ssl PUBLIC ${PROJECT_BINARY_DIR}/include )
 
 target_link_libraries( ssl crypto )

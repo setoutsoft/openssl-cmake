@@ -279,6 +279,9 @@ else()
 endif()
 
 add_library( crypto ${LIBSRC} ${OBJECTS_SRC} )
+if(NOT WIN32 OR MINGW)
+target_compile_options(crypto PRIVATE -fPIC)
+endif()
 
 target_include_directories( crypto PUBLIC ${PROJECT_BINARY_DIR}/include )
 
