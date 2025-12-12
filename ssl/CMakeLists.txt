@@ -68,3 +68,8 @@ install( TARGETS ssl
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib )
+
+    
+set_target_properties(ssl PROPERTIES
+    FOLDER "third-part/openssl"
+)

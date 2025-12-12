@@ -312,3 +312,7 @@ install( TARGETS crypto
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib )
+
+set_target_properties(crypto PROPERTIES
+    FOLDER "third-part/openssl"
+)
