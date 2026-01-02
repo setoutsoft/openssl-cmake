@@ -311,10 +311,6 @@ else()
   set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto" )
 endif()
 
-install( TARGETS crypto
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib )
 
 set_target_properties(crypto PROPERTIES
     FOLDER "third-part/openssl"
