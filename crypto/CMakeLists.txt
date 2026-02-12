@@ -298,19 +298,7 @@ endif()
 
 set_target_properties( crypto PROPERTIES
   VERSION "${LIB_VERSION}" SOVERSION "${LIB_SOVERSION}" )
-
-if( ANDROID )
-  set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto_1_1" )
-elseif( MSVC )
-  if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
-    set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto-1_1-x64" )
-  elseif( CMAKE_SIZEOF_VOID_P EQUAL 4 )
-    set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto-1_1" )
-  endif()
-else()
-  set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto" )
-endif()
-
+set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto_1_1" )
 
 set_target_properties(crypto PROPERTIES
     FOLDER "third-part/openssl"
