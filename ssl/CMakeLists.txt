@@ -49,7 +49,7 @@ target_compile_options(ssl PRIVATE -fPIC)
 endif()
 target_include_directories( ssl PUBLIC ${PROJECT_BINARY_DIR}/include )
 
-target_link_libraries( ssl crypto )
+target_link_libraries( ssl PUBLIC crypto )
 
 set_target_properties( ssl PROPERTIES
   VERSION "${LIB_VERSION}" SOVERSION "${LIB_SOVERSION}" )
@@ -58,4 +58,18 @@ set_target_properties( ssl PROPERTIES OUTPUT_NAME "ssl_1_1")
     
 set_target_properties(ssl PROPERTIES
     FOLDER "third-part/openssl"
+)
+
+install(TARGETS ssl
+    CONFIGURATIONS Release
+    RUNTIME DESTINATION bin/Release
+    LIBRARY DESTINATION lib/Release
+    ARCHIVE DESTINATION lib/Release
+)
+
+install(TARGETS ssl
+    CONFIGURATIONS Debug
+    RUNTIME DESTINATION bin/Debug
+    LIBRARY DESTINATION lib/Debug
+    ARCHIVE DESTINATION lib/Debug
 )

@@ -286,7 +286,7 @@ endif()
 target_include_directories( crypto PUBLIC ${PROJECT_BINARY_DIR}/include )
 
 if( WIN32 AND NOT CYGWIN )
-  target_link_libraries( crypto ws2_32 crypt32 )
+  target_link_libraries( crypto PUBLIC ws2_32 crypt32 )
 else()
   if( Threads_FOUND )
     target_link_libraries( crypto ${CMAKE_THREAD_LIBS_INIT} )
@@ -302,4 +302,19 @@ set_target_properties( crypto PROPERTIES OUTPUT_NAME "crypto_1_1" )
 
 set_target_properties(crypto PROPERTIES
     FOLDER "third-part/openssl"
+)
+
+
+install(TARGETS crypto
+    CONFIGURATIONS Release
+    RUNTIME DESTINATION bin/Release
+    LIBRARY DESTINATION lib/Release
+    ARCHIVE DESTINATION lib/Release
+)
+
+install(TARGETS crypto
+    CONFIGURATIONS Debug
+    RUNTIME DESTINATION bin/Debug
+    LIBRARY DESTINATION lib/Debug
+    ARCHIVE DESTINATION lib/Debug
 )
