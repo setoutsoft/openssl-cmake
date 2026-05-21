@@ -176,6 +176,9 @@ configure_file( ${PROJECT_BINARY_DIR}/opensslconf.h.cmake
 add_subdirectory(crypto)
 add_subdirectory(ssl)
 
+file( GLOB PUBLIC_HEADERS "${PROJECT_BINARY_DIR}/include/openssl/*.h" )
+install( FILES ${PUBLIC_HEADERS} DESTINATION include/third-part/openssl )
+
 # Create alias targets for compatibility with find_package(OpenSSL)
 # This allows libcurl and other projects to use OpenSSL::SSL and OpenSSL::Crypto
 if(NOT TARGET OpenSSL::Crypto)
